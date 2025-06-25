@@ -8,11 +8,19 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class ProductController extends AbstractController
 {
-    #[Route('/product', name: 'app_product')]
+    #[Route('/product', name: 'product')]
     public function index(): Response
     {
-        return $this->render('product/index.html.twig', [
-            'controller_name' => 'ProductController',
+        return $this->render('product/product.html.twig');
+    }
+
+    #Parametro en el endpoint
+    
+    #[Route('/product/{id}', name: 'product_show')]
+    public function show(int $id): Response
+    {
+        return $this->render('product/show.html.twig',[
+            'product_id' => $id
         ]);
     }
 }
